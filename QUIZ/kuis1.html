@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Web</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url(https://i.pinimg.com/736x/24/52/20/245220962ecabba9f3b6ee3fac3b0a7f.jpg)
+          no-repeat center center fixed;
+        background-size: cover;
+      }
+      .navbar {
+        background: #333;
+        padding: 10px;
+        text-align: center;
+      }
+      .navbar a {
+        color: grey;
+        padding: 10px 20px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background: rebeccapurple;
+      }
+      .container {
+        padding: 20px;
+        background: rgba(233, 229, 229, 0.8);
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+      button {
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #4caf50;
+        color: grey;
+      }
+      .profile {
+        text-align: center;
+        color: grey;
+        padding: 50px;
+      }
+      .profile img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+      }
+      .profile h2 {
+        margin: 10px 0;
+      }
+      .profile p {
+        margin: 5px 0;
+      }
+      .profile button {
+        background: red;
+        color: rgb(244, 236, 236);
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      .profile button:hover {
+        background: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="jadwal.html" onclick="showPage('jadwal')">Jadwal</a>
+    </div>
+    <div id="home" class="container">
+      <div class="profile">
+        <img src="wallpaperflare.com_wallpaper.jpg" alt="Profile Picture" />
+        <h2>Nama: Muhammad Ilham Akbar</h2>
+        <p>NPM: 2357051009</p>
+        <p>Jurusan: Ilmu Komputer</p>
+        <p>Universitas Lampung</p>
+        <a href="jadwal.html"><button>Jadwal</button></a>
+      </div>
+    </div>
+  </body>
+</html>
