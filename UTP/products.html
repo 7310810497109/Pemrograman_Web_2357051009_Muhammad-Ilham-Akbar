@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - CitrusCompany</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #fff;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: white;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .logo span:first-child {
+        color: #ffa500;
+      }
+
+      .logo span:last-child {
+        color: #ff6347;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        margin-bottom: 0;
+      }
+
+      nav ul li {
+        margin-left: 30px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      nav ul li a:hover {
+        color: #ffa500;
+      }
+
+      .active {
+        color: #333;
+        border-bottom: 3px solid #ffa500;
+        padding-bottom: 5px;
+      }
+
+      .hero {
+        background-color: #f5f5f5;
+        padding: 80px 20px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .product-card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-image {
+        height: 200px;
+        background-color: #f0f0f0;
+        overflow: hidden;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-details {
+        padding: 20px;
+      }
+
+      .product-title {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .product-description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .product-price {
+        font-size: 18px;
+        color: #ffa500;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #ffa500;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+      }
+
+      .feature-list {
+        margin-bottom: 15px;
+        padding-left: 20px;
+      }
+
+      .feature-list li {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 5px;
+      }
+
+      .btn-primary {
+        background-color: #ffa500;
+        border-color: #ffa500;
+      }
+
+      .btn-primary:hover {
+        background-color: #ff8c00;
+        border-color: #ff8c00;
+      }
+
+      .btn-outline-primary {
+        color: #ffa500;
+        border-color: #ffa500;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: #ffa500;
+        color: white;
+      }
+
+      .category-tabs {
+        margin-bottom: 40px;
+      }
+
+      .category-tabs .nav-link {
+        color: #666;
+        border: none;
+        padding: 10px 20px;
+        margin-right: 5px;
+        border-radius: 30px;
+        transition: all 0.3s;
+      }
+
+      .category-tabs .nav-link:hover {
+        color: #ffa500;
+      }
+
+      .category-tabs .nav-link.active {
+        background-color: #ffa500;
+        color: white;
+      }
+
+      .filters {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 50px 20px 20px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+      }
+
+      .footer-col {
+        flex: 1;
+        padding: 0 15px;
+      }
+
+      .footer-col h3 {
+        margin-bottom: 20px;
+        color: #ffa500;
+        font-size: 20px;
+      }
+
+      .footer-col p,
+      .footer-col li {
+        margin-bottom: 10px;
+        color: #ccc;
+        font-size: 14px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .footer-col ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-col ul li a:hover {
+        color: #ffa500;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #555;
+        color: #999;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          padding: 20px;
+        }
+
+        nav ul {
+          margin-top: 20px;
+        }
+
+        nav ul li {
+          margin: 0 10px;
+        }
+
+        .footer-content {
+          flex-direction: column;
+        }
+
+        .footer-col {
+          margin-bottom: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo"><span>Citrus</span><span>Company</span></div>
+      <nav>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Produk Jeruk Premium</h1>
+        <p>
+          Temukan berbagai varietas jeruk lokal premium pilihan dengan kualitas
+          terbaik langsung dari petani Indonesia. Rasakan kesegaran dan
+          kenikmatan jeruk asli nusantara.
+        </p>
+      </section>
+
+      <div class="container py-5">
+        <!-- Category Tabs -->
+        <ul
+          class="nav justify-content-center category-tabs"
+          id="productTabs"
+          role="tablist"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="all-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#all"
+              type="button"
+              role="tab"
+              aria-controls="all"
+              aria-selected="true"
+            >
+              Semua Produk
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="jeruk-lokal-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#jeruk-lokal"
+              type="button"
+              role="tab"
+              aria-controls="jeruk-lokal"
+              aria-selected="false"
+            >
+              Jeruk Lokal
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="jeruk-impor-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#jeruk-impor"
+              type="button"
+              role="tab"
+              aria-controls="jeruk-impor"
+              aria-selected="false"
+            >
+              Jeruk Impor
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="produk-olahan-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#produk-olahan"
+              type="button"
+              role="tab"
+              aria-controls="produk-olahan"
+              aria-selected="false"
+            >
+              Produk Olahan
+            </button>
+          </li>
+        </ul>
+
+        <!-- Filters -->
+        <div class="filters">
+          <div class="row">
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>Urutkan berdasarkan</option>
+                <option value="1">Harga: Rendah ke Tinggi</option>
+                <option value="2">Harga: Tinggi ke Rendah</option>
+                <option value="3">Terlaris</option>
+                <option value="4">Terbaru</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>Jenis Jeruk</option>
+                <option value="1">Jeruk Keprok</option>
+                <option value="2">Jeruk Siam</option>
+                <option value="3">Jeruk Bali</option>
+                <option value="4">Jeruk Nipis</option>
+                <option value="5">Jeruk Lemon</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>Rentang Harga</option>
+                <option value="1">Rp 10.000 - Rp 50.000</option>
+                <option value="2">Rp 50.000 - Rp 100.000</option>
+                <option value="3">Rp 100.000+</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-select">
+                <option selected>Asal Daerah</option>
+                <option value="1">Bali</option>
+                <option value="2">Jawa Timur</option>
+                <option value="3">Kalimantan</option>
+                <option value="4">Sulawesi</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="tab-content" id="productTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="all"
+            role="tabpanel"
+            aria-labelledby="all-tab"
+          >
+            <div class="row g-4">
+              <!-- Product 1 -->
+              <div class="col-md-4 col-sm-6">
+                <div class="card product-card position-relative">
+                  <span class="product-badge">Terlaris</span>
+                  <div class="product-image">
+                    <img
+                      src="https://jestro.bsip.pertanian.go.id/storage/assets/uploads/images/berita/wFdoIJ6XR4OeG8bnSZ5zwvUtHoGTBuNgTbtXSi4O.jpg"
+                      alt="Jeruk Keprok Batu"
+                    />
+                  </div>
+                  <div class="card-body product-details">
+                    <h3 class="product-title">Jeruk Keprok Batu</h3>
+                    <p class="product-description">
+                      Jeruk keprok premium dari dataran tinggi Batu, Jawa Timur
+                      dengan rasa manis dan sedikit asam yang seimbang.
+                    </p>
+                    <ul class="feature-list">
+                      <li>Kaya vitamin C</li>
+                      <li>Dipetik langsung saat matang optimal</li>
+                      <li>Manis dan segar</li>
+                    </ul>
+                    <p class="product-price">Rp 35.000 / kg</p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-outline-primary">Detail</button>
+                      <button class="btn btn-primary">
+                        Tambah ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 2 -->
+              <div class="col-md-4 col-sm-6">
+                <div class="card product-card position-relative">
+                  <span class="product-badge bg-success">Organik</span>
+                  <div class="product-image">
+                    <img
+                      src="https://id-test-11.slatic.net/shop/91d1d3f50c0400d88537ec9ced4c680e.jpeg"
+                      alt="Jeruk Siam Pontianak"
+                    />
+                  </div>
+                  <div class="card-body product-details">
+                    <h3 class="product-title">Jeruk Siam Pontianak</h3>
+                    <p class="product-description">
+                      Jeruk siam khas Kalimantan Barat yang terkenal dengan rasa
+                      manisnya yang khas dan kulit yang tipis.
+                    </p>
+                    <ul class="feature-list">
+                      <li>Kulit tipis dan mudah dikupas</li>
+                      <li>Tanpa pestisida</li>
+                      <li>Kadar air tinggi dan segar</li>
+                    </ul>
+                    <p class="product-price">Rp 28.000 / kg</p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-outline-primary">Detail</button>
+                      <button class="btn btn-primary">
+                        Tambah ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 3 -->
+              <div class="col-md-4 col-sm-6">
+                <div class="card product-card">
+                  <div class="product-image">
+                    <img
+                      src="https://asset.kompas.com/crops/NA9G5ConNPWL58wNBpv8_ewe2Wc=/0x0:1000x667/1200x800/data/photo/2023/09/25/651105b8b8dc1.jpg"
+                      alt="Jeruk Bali"
+                    />
+                  </div>
+                  <div class="card-body product-details">
+                    <h3 class="product-title">Jeruk Bali</h3>
+                    <p class="product-description">
+                      Jeruk besar dengan daging buah yang renyah dan rasa yang
+                      manis dengan sedikit sentuhan asam yang menyegarkan.
+                    </p>
+                    <ul class="feature-list">
+                      <li>Ukuran besar dan berdaging tebal</li>
+                      <li>Rendah kalori</li>
+                      <li>Ideal untuk jus dan salad</li>
+                    </ul>
+                    <p class="product-price">Rp 45.000 / buah</p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-outline-primary">Detail</button>
+                      <button class="btn btn-primary">
+                        Tambah ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 4 -->
+              <div class="col-md-4 col-sm-6">
+                <div class="card product-card">
+                  <div class="product-image">
+                    <img
+                      src="https://images.tokopedia.net/img/cache/500-square/VqbcmM/2024/7/18/96d41624-9ab5-4bcf-bc5f-0f873e15ea73.jpg"
+                      alt="Jeruk Nipis"
+                    />
+                  </div>
+                  <div class="card-body product-details">
+                    <h3 class="product-title">Jeruk Nipis Premium</h3>
+                    <p class="product-description">
+                      Jeruk nipis segar dengan aroma khas dan rasa asam yang
+                      tajam, sempurna untuk masakan dan minuman.
+                    </p>
+                    <ul class="feature-list">
+                      <li>Aroma kuat dan khas</li>
+                      <li>Sangat berair</li>
+                      <li>Dipanen saat matang optimal</li>
+                    </ul>
+                    <p class="product-price">Rp 18.000 / 500gr</p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-outline-primary">Detail</button>
+                      <button class="btn btn-primary">
+                        Tambah ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 5 -->
+              <div class="col-md-4 col-sm-6">
+                <div class="card product-card position-relative">
+                  <span class="product-badge bg-danger">Baru</span>
+                  <div class="product-image">
+                    <img
+                      src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/3/2/86737739-1131-4120-8812-85e24c031a63.jpg"
+                      alt="Jeruk Lemon Impor"
+                    />
+                  </div>
+                  <div class="card-body product-details">
+                    <h3 class="product-title">Jeruk Lemon Impor</h3>
+                    <p class="product-description">
+                      Lemon segar berkualitas tinggi dengan rasa asam segar dan
+                      aroma yang kuat, cocok untuk minuman dan hidangan penutup.
+                    </p>
+                    <ul class="feature-list">
+                      <li>Kulit tebal dan beraroma</li>
+                      <li>Kaya akan vitamin C</li>
+                      <li>Ideal untuk air lemon dan resep masakan</li>
+                    </ul>
+                    <p class="product-price">Rp 38.000 / 500gr</p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-outline-primary">Detail</button>
+                      <button class="btn btn-primary">
+                        Tambah ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 6 -->
+              <div class="col-md-4 col-sm-6">
+                <div class="card product-card">
+                  <div class="product-image">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBrcg-aqF97WNgM9LkbGRI36PickRFGqSzQ&s"
+                      alt="Selai Jeruk Homemade"
+                    />
+                  </div>
+                  <div class="card-body product-details">
+                    <h3 class="product-title">Selai Jeruk Homemade</h3>
+                    <p class="product-description">
+                      Selai jeruk premium buatan sendiri dengan bahan alami
+                      tanpa pengawet dan pemanis buatan.
+                    </p>
+                    <ul class="feature-list">
+                      <li>100% bahan alami</li>
+                      <li>Tanpa pengawet</li>
+                      <li>Kemasan kaca ramah lingkungan</li>
+                    </ul>
+                    <p class="product-price">Rp 55.000 / jar</p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-outline-primary">Detail</button>
+                      <button class="btn btn-primary">
+                        Tambah ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation" class="mt-5">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a
+                    class="page-link"
+                    href="#"
+                    tabindex="-1"
+                    aria-disabled="true"
+                    >Previous</a
+                  >
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="jeruk-lokal"
+            role="tabpanel"
+            aria-labelledby="jeruk-lokal-tab"
+          >
+            <!-- Content for Jeruk Lokal tab -->
+            <div class="alert alert-info">
+              Pilih tab "Jeruk Lokal" untuk melihat daftar jeruk lokal
+              Indonesia.
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="jeruk-impor"
+            role="tabpanel"
+            aria-labelledby="jeruk-impor-tab"
+          >
+            <!-- Content for Jeruk Impor tab -->
+            <div class="alert alert-info">
+              Pilih tab "Jeruk Impor" untuk melihat daftar jeruk impor premium.
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="produk-olahan"
+            role="tabpanel"
+            aria-labelledby="produk-olahan-tab"
+          >
+            <!-- Content for Produk Olahan tab -->
+            <div class="alert alert-info">
+              Pilih tab "Produk Olahan" untuk melihat daftar produk olahan dari
+              jeruk.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>CitrusCompany</h3>
+          <p>
+            Penyedia jeruk lokal premium terbaik di Indonesia dengan kualitas
+            terjamin dan rasa autentik langsung dari petani lokal terpilih.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Link Cepat</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Kontak</h3>
+          <p>
+            Jl. Kebun Jeruk, Pesawaran<br />
+            Lampung, Indonesia
+          </p>
+          <p>Email: info@citruscompany.id</p>
+          <p>Tel: +62 815 7304 9831</p>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 CitrusCompany. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
